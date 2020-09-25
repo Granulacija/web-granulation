@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Main msg="Granulation"/>
+    <Main msg="Tablets production monitoring"/>
   </div>
 </template>
 

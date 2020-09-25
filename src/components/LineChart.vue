@@ -1,12 +1,21 @@
 <template>
   <div>
-    <v-chart :options="option"/>
+    <v-chart :options="option" style="width: auto; margin: 0 auto;" />
   </div>
 </template>
 
 <script>
+// const moment = require('moment')
 export default {
   name: "LineChart",
+  props: ['xData', 'yData'],
+  computed: {
+    zipData() {
+      return this.xData.map((e, i) => {
+        return [e, this.yData[i]];
+      });
+    },
+  },
   data() {
     return {
       option: {
@@ -20,18 +29,35 @@ export default {
           data: ['takeOne']
         },
         grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true
+          // left: '3%',
+          // right: '4%',
+          // bottom: '3%',
+          containLabel: true,
+          y2: 1
         },
-        toolbox: {
-          feature: {
-            saveAsImage: {}
-          }
+        // toolbox: {
+        //   show: true,
+        //   feature: {
+        //     mark: { show: true },
+        //     dataView: { show: true, readOnly: false, title: "Podatki" },
+        //     restore: { show: true, title: "Ponastavi" },
+        //     saveAsImage: { show: true, title: "Shrani" }
+        //   }
+        // },
+        dataZoom: {
+          show: true,
+          start: 0
         },
         xAxis: {
-          type: 'time',
+          type: 'category',
+          data: this.xData
+          // axisLabel: {
+          //   formatter: function (value) {
+          //     console.log(value);
+          //     return moment(value, ["HH:mm:ss"]).toDate();
+          //     // And other formatter tool (e.g. moment) can be used here.
+          //   }
+          // }
           // boundaryGap: false,
         },
         yAxis: {
@@ -41,7 +67,7 @@ export default {
           {
             name: 'takeOne',
             type: 'line',
-            data: [1, 2, 3, 4, 5, 230, 210]
+            data: this.yData
           },
         ]
       }
