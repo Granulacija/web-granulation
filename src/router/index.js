@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Granulation from "@/views/Granulation";
+import GranulationList from "@/views/GranulationList";
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/granulation',
     name: 'Granulation',
     component: Granulation
+  },
+  {
+    path: '/granulationList',
+    name: 'GranulationList',
+    component: GranulationList
   },
   {
     path: '/about',
