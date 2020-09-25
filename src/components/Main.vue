@@ -1,7 +1,7 @@
 <template>
   <b-container>
 
-    <h1 class="main-title">{{ msg }}</h1>
+    <h1 class="main-title mt-4">{{ msg }}</h1>
     <div>
 
     </div>
