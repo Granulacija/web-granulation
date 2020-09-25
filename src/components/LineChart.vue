@@ -8,7 +8,7 @@
 // const moment = require('moment')
 export default {
   name: "LineChart",
-  props: ['xData', 'yData'],
+  props: ['title', 'xData', 'yData'],
   computed: {
     zipData() {
       return this.xData.map((e, i) => {
@@ -16,17 +16,41 @@ export default {
       });
     },
   },
+  watch: {
+    title: function (val) {
+      this.showChart = false;
+      this.option.title.text = val;
+      this.showChart = true;
+    },
+    // xData: function(val) {
+    //   this.showChart = false;
+    //   this.option.xAxis.data = val;
+    //   this.showChart = true;
+    // },
+    yData: function(val) {
+      this.showChart = false;
+      this.option.series = [
+        {
+          name: this.title,
+          type: 'line',
+          data: val
+        }
+      ];
+      this.showChart = true;
+    }
+  },
   data() {
     return {
+      showChart: true,
       option: {
-        title: {
-          text: 'Granulacija'
-        },
+          title: {
+              text: this.title
+          },
         tooltip: {
           trigger: 'axis'
         },
         legend: {
-          data: ['takeOne']
+          data: [this.title]
         },
         grid: {
           // left: '3%',
@@ -65,7 +89,7 @@ export default {
         },
         series: [
           {
-            name: 'takeOne',
+            name: this.title,
             type: 'line',
             data: this.yData
           },
