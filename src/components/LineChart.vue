@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :options="option" style="width: auto; margin: 0 auto;" />
+    <v-chart v-if="showChart" :options="option" style="width: auto; margin: 0 auto;" />
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 // const moment = require('moment')
 export default {
   name: "LineChart",
-  props: ['title', 'xData', 'yData'],
+  props: ['title', 'xData', 'yData', 'yHistory'],
   computed: {
     zipData() {
       return this.xData.map((e, i) => {
@@ -17,11 +17,11 @@ export default {
     },
   },
   watch: {
-    title: function (val) {
-      this.showChart = false;
-      this.option.title.text = val;
-      this.showChart = true;
-    },
+    // title: function (val) {
+    //   this.showChart = false;
+    //   this.option.title.text = val;
+    //   this.showChart = true;
+    // },
     // xData: function(val) {
     //   this.showChart = false;
     //   this.option.xAxis.data = val;
@@ -37,7 +37,35 @@ export default {
         }
       ];
       this.showChart = true;
-    }
+    },
+    yHistory: function(val) {
+
+      this.showChart = false;
+      this.option.series = [
+        {
+          name: this.title,
+          type: 'line',
+          data: this.yData
+        }
+      ];
+      this.option.legend.data = [this.title];
+
+      for (let i = 0; i < val.length; i++) {
+        this.option.legend.data.push(val[i].name);
+        this.option.series.push({
+          name: val[i].name,
+          type: 'line',
+          data: val[i].y
+        });
+      }
+      let tmp  = this.option;
+      this.option = {};
+      this.option = tmp;
+      this.$nextTick(() => {
+        // Add the component back in
+        this.showChart = true;
+      });
+    },
   },
   data() {
     return {

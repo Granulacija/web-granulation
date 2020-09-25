@@ -3,7 +3,16 @@
     <b-row >
       <b-col></b-col>
       <b-col></b-col>
-      <b-col> <b-btn>History</b-btn></b-col>
+      <b-col>
+        <b-dropdown text="Compare">
+          <div v-for="(name, idx) in historyNames" :key="name" >
+            <label>
+              <input  type="checkbox" :id="name" :value="idx" v-model="checkedNames">
+              {{ name }}
+            </label>
+          </div>
+        </b-dropdown>
+      </b-col>
     </b-row>
     <b-row class="padding">
       <b-col md="3">
@@ -12,7 +21,7 @@
          <line-chart-minimized :x-data="currentExperiment.Time_relative" :y-data="currentExperiment.Outlet_air_T" title="Outlet_air_T" @click.native="setCurrent('Outlet_air_T')"></line-chart-minimized>
       </b-col>
       <b-col md="6" class="center">
-        <line-chart class="mainChart" v-if="showMain" :x-data="currentExperiment.Time_relative" :y-data="currentExperiment[currentMainGraph]" :title="currentMainGraph"></line-chart>
+        <line-chart class="mainChart" v-if="showMain" :x-data="currentExperiment.Time_relative" :y-data="currentExperiment[currentMainGraph]" :yHistory="currentHistoryLists" :title="currentMainGraph"></line-chart>
       </b-col>
       <b-col md="3">
         <line-chart-minimized title="Inlet_air_humidity" :x-data="currentExperiment.Time_relative" :y-data="currentExperiment.Inlet_air_humidity" @click.native="setCurrent('Inlet_air_humidity')"></line-chart-minimized>
@@ -35,7 +44,8 @@ export default {
   data: function () {
     return {
       showMain: true,
-      currentMainGraph: 'Product_T'
+      currentMainGraph: 'Product_T',
+      checkedNames: [],
     }
   },
   computed: {
@@ -43,6 +53,19 @@ export default {
       let currExp = granulationData[2];
       currExp.Time_relative = granulationData[2].Time_relative.map(e => moment(e, ["HH:mm:ss"]).unix())
       return currExp;
+    },
+    currentHistoryLists() {
+      let array = [];
+      for (let i = 0; i < this.checkedNames.length; i++) {
+        array.push({
+          name: granulationData[this.checkedNames[i]].Experiment_ID,
+          y: granulationData[this.checkedNames[i]][this.currentMainGraph]
+        })
+      }
+      return array;
+    },
+    historyNames() {
+      return [granulationData[0].Experiment_ID, granulationData[1].Experiment_ID]
     }
   },
   methods: {
