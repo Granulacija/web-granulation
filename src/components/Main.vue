@@ -1,9 +1,29 @@
 <template>
   <b-container>
-    <h1>{{ msg }}</h1>
-      <b-card v-for="step in steps" :key="step.name" class="mt-4 hover-pointer">
-        {{ step.name }}
+
+    <h1 class="main-title">{{ msg }}</h1>
+    <div>
+
+    </div>
+    <b-card-group>
+      <b-card v-for="step in steps" :key="step.name" @click.prevent="navigate(step.routeName)"
+          :title="step.name"
+          :img-src="'http://localhost:8080/'+step.image"
+          img-alt=""
+          img-bottom
+          tag="article"
+          style="max-width: 20rem;"
+          class="m-6 image-view"
+      >
+        <b-card-text>
+          {{ step.name }}
+        </b-card-text>
+
       </b-card>
+    </b-card-group>
+
+    <h1 class="main-title mt-4">Receptura</h1>
+
 
   </b-container>
 </template>
@@ -11,24 +31,32 @@
 <script>
 export default {
   name: 'Main',
+  methods: {
+    navigate (routeName) {
+      this.$router.push({ name: routeName})
+    }
+  },
   data() {
     return {
       steps: [
         {
           name: 'Priprava granularne raztopine',
-          route: ''
+          routeName: 'Preparation'
         },
         {
+          image: 'slojna_granulacija.jpg',
           name: 'Vrtično slojno granuliranje',
-          route: ''
+          routeName: 'Granulation'
         },
         {
-          name: 'Homegenizacija',
-          route: ''
+          image: 'homogenizacija.png',
+          name: 'Homogenizacija',
+          routeName: 'Homogenization'
         },
         {
           name: 'Tabletiranje',
-          route: ''
+          image: 'tabletiranje.jpg',
+          routeName: 'Tableting'
         }
       ]
     }
@@ -55,12 +83,22 @@ li {
 a {
   color: #42b983;
 }
-.hover-pointer {
-  background-color: ghostwhite;
-  /*cursor: grab;*/
+
+.main-title {
+  color: green;
+  margin-bottom: 1em;
 }
-.hover-pointer:hover {
-  background-color: navajowhite;
-  /*cursor: grab;*/
+
+#app > div.home > div > div.card-group > article:nth-child(2) > img {
+  height: 250px;
 }
+
+.image-view {
+  background-color: paleturquoise;
+}
+
+.image-view:hover {
+  background-color: turquoise;
+}
+
 </style>
