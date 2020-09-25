@@ -22,7 +22,26 @@
       </b-card>
     </b-card-group>
 
-    <h1 class="main-title mt-4">Receptura</h1>
+    <h1 class="main-title mt-4"></h1>
+    <b-card-group>
+      <b-col></b-col>
+      <b-col>
+      <b-card v-for="step in goods" :key="step.name" @click.prevent="navigate(step.routeName)"
+              :title="step.name"
+              img-alt=""
+              img-bottom
+              tag="article"
+              style="max-width: 20rem;"
+              class="m-6 image-view"
+      >
+        <b-card-text>
+          {{ step.name }}
+        </b-card-text>
+
+      </b-card>
+      </b-col>
+      <b-col></b-col>
+    </b-card-group>
 
 
   </b-container>
@@ -58,6 +77,16 @@ export default {
           image: 'tabletiranje.jpg',
           routeName: 'Tableting'
         }
+      ],
+      goods: [
+        {
+          name: 'Zaloga surovin',
+          routeName: 'Preparation'
+        },
+        {
+          name: 'Sestava',
+          routeName: 'Consitency'
+        },
       ]
     }
   },
