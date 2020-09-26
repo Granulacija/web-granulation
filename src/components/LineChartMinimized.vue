@@ -31,11 +31,13 @@ export default {
           // shadowBlur: 2
         },
         xAxis: {
+          name: this.xUnit,
           // type: 'category',
           data: this.xData,
           show: true,
         },
         yAxis: {
+          name: this.yUnit,
           // type: 'value',
           show: true,
           min: Math.min.apply(Math, this.yData),
@@ -66,5 +68,6 @@ export default {
   margin-top: 5px;
   border: 2px solid black;
   border-radius: 25px;
+  padding: 5px;
 }
 </style>

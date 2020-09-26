@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div  class="chartBorder">
     <v-chart v-if="showChart" :options="option" style="width: auto; margin: 0 auto;" />
   </div>
 </template>
@@ -152,5 +152,10 @@ export default {
 </script>
 
 <style scoped>
-
+.chartBorder {
+  margin-top: 5px;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 5px;
+}
 </style>
