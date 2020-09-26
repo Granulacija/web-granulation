@@ -1,6 +1,6 @@
 <template>
   <div class="chartBorder">
-    <v-chart :options="option" style="width: auto; margin: 0 auto;" />
+    <v-chart :options="option" style="width: auto; margin: 0 auto;z-index: 10" />
   </div>
 </template>
 

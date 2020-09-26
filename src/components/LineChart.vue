@@ -1,6 +1,6 @@
 <template>
   <div  class="chartBorder">
-    <v-chart v-if="showChart" :options="option" style="width: auto; margin: 0 auto;" />
+    <v-chart v-if="showChart" :options="option" style="width: auto; margin: 0 auto; z-index: 1" />
   </div>
 </template>
 
@@ -17,11 +17,11 @@ export default {
     },
   },
   watch: {
-    // title: function (val) {
-    //   this.showChart = false;
-    //   this.option.title.text = val;
-    //   this.showChart = true;
-    // },
+    title: function (val) {
+      this.showChart = false;
+      this.option.title.text = val;
+      this.showChart = true;
+    },
     // xData: function(val) {
     //   this.showChart = false;
     //   this.option.xAxis.data = val;
