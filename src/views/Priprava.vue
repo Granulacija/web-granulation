@@ -22,22 +22,25 @@ export default {
       steps: [
         {
           tag: "Korak 1",
-          content: "Granulirno raztopino pripravimo v nerjaveči 50 L posodi. "
+          htmlMode: true,
+          content: "<div style=\"color:black; font-weight: bold;\">Granulirno raztopino pripravimo v nerjaveči 50 L posodi.</div> "
         },
         {
           tag: "Korak 2",
           color: 'orange',
           type: 'circle',
           htmlMode: true,
-          content: "<div style=\"color:#ed9153;\">V posodo najprej dodamo Topilo 1 in Topilo 2.</div> "
+          content: "<div style=\"color:#ed9153; font-weight: bold;\">V posodo najprej dodamo Topilo 1 in Topilo 2.</div> "
         },
         {
           tag: "Korak 3",
-          content: "Topila mešamo 15 min pri 100 obratih na minuto. "
+          htmlMode: true,
+          content: "<div style=\"color:black; font-weight: bold;\">Topila mešamo 15 min pri 100 obratih na minuto. </div>"
         },
         {
           tag: "Korak 4",
-          content: "Med mešanjem počasi dodajamo Zdravilno učinkovino in mešamo 30 min pri 200 obratih na minuto oziroma do bistre raztopine. "
+          htmlMode: true,
+          content: "<div style=\"color:black; font-weight: bold;\">Med mešanjem počasi dodajamo Zdravilno učinkovino in mešamo 30 min pri 200 obratih na minuto oziroma do bistre raztopine.</div> "
         }
       ]
     }
