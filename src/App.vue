@@ -84,7 +84,7 @@ setInterval(async () => {
     console.log(JSON.stringify(predictions.map(e => e.boundingBox.bottomRight)))
 
   }
-},10)
+},16)
 export default {
   name: 'App',
   methods: {
