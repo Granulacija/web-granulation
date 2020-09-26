@@ -81,7 +81,7 @@ export default {
         {
           image: 'steel-bowl.png',
           name: 'Priprava granularne raztopine',
-          routeName: 'Preparation'
+          routeName: 'Priprava'
         },
         {
           image: 'slojna_granulacija.jpg',

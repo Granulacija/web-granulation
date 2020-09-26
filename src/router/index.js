@@ -6,6 +6,7 @@ import MaterialList from "@/views/MaterialList";
 import Preparation from "@/views/Preparation";
 import Homogenization from "@/views/Homogenization";
 import Tableting from "@/views/Tableting";
+import Priprava from "@/views/Priprava";
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/preparation',
     name: 'Preparation',
     component: Preparation
+  },
+  {
+    path: '/priprava',
+    name: 'Priprava',
+    component: Priprava
   },
   {
     path: '/granulation',

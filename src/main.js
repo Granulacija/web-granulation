@@ -22,6 +22,9 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 Vue.config.productionTip = false
+import LightTimeline from 'vue-light-timeline';
+
+Vue.use(LightTimeline);
 
 
 new Vue({
