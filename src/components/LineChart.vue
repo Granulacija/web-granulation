@@ -155,7 +155,9 @@ export default {
 .chartBorder {
   margin-top: 5px;
   border: 2px solid black;
+
   border-radius: 25px;
   padding: 5px;
+  background-color: rgba(175,238,238, 0.6);
 }
 </style>

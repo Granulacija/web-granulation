@@ -69,5 +69,6 @@ export default {
   border: 2px solid black;
   border-radius: 25px;
   padding: 5px;
+  background-color: rgba(175,238,255, 0.6)
 }
 </style>
