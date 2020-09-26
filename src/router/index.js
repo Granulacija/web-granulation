@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Granulation from "@/views/Granulation";
-import GranulationList from "@/views/GranulationList";
+import MaterialList from "@/views/MaterialList";
 import Preparation from "@/views/Preparation";
 import Homogenization from "@/views/Homogenization";
 import Tableting from "@/views/Tableting";
@@ -56,9 +56,9 @@ const routes = [
     component: Tableting
   },
   {
-    path: '/granulationList',
-    name: 'GranulationList',
-    component: GranulationList
+    path: '/materialList',
+    name: 'MaterialList',
+    component: MaterialList
   },
   {
     path: '/about',

@@ -106,7 +106,7 @@ export default {
         },
         {
           name: 'Sestava',
-          routeName: 'Consitency'
+          routeName: 'MaterialList'
         },
       ]
     }
