@@ -188,7 +188,7 @@ canvas {
   width: 100%;
   height: 100%;
   z-index: -10;
-  border: 10px solid black;
+  border: 1px solid black;
   /*visibility: hidden;*/
 }
 /*#canvas-wrapper {*/
