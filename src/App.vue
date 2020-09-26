@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <video autoplay muted loop id="myVideo">
-      <source src="./assets/rain.mp4" type="video/mp4">
-    </video>
+    <img id="myVideo" src="http://192.168.137.171:8080/video">
+
     <router-view/>
 
   </div>
