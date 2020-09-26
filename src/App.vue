@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <img id="myVideo" src="http://172.20.10.4:8080/video" crossorigin="anonymous">
+    <img id="myVideo" src="https://st.depositphotos.com/1102480/1347/i/450/depositphotos_13473158-stock-photo-woman-hand.jpg" crossorigin="anonymous">
+<!--    <img id="myVideo" src="http://172.20.10.4:8080/video" crossorigin="anonymous">-->
 
     <router-view/>
 
