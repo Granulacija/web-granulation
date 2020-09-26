@@ -35,7 +35,7 @@
 <script>
 import LineChart from "@/components/LineChart";
 import granulationData from '@/assets/hekaton.json'
-import moment from 'moment';
+// import moment from 'moment';
 import LineChartMinimized from "@/components/LineChartMinimized";
 
 export default {
@@ -51,7 +51,7 @@ export default {
   computed: {
     currentExperiment() {
       let currExp = granulationData[2];
-      currExp.Time_relative = granulationData[2].Time_relative.map(e => moment(e, ["HH:mm:ss"]).unix())
+      currExp.Time_relative = granulationData[2].Time_relative//.map(e => moment(e, ["HH:mm:ss"]).format('HH:mm:ss'))
       return currExp;
     },
     currentHistoryLists() {

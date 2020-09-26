@@ -36,7 +36,14 @@ export default {
           data: val
         }
       ];
-      this.showChart = true;
+
+      this.option.yAxis.min = Math.min.apply(Math, val);
+      this.option.yAxis.max = Math.max.apply(Math, val);
+
+      this.$nextTick(() => {
+        // Add the component back in
+        this.showChart = true;
+      });
     },
     yHistory: function(val) {
 
@@ -75,7 +82,19 @@ export default {
               text: this.title
           },
         tooltip: {
-          trigger: 'axis'
+          trigger: 'axis',
+          formatter: function (params) {
+            var colorSpan = color => '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + color + '"></span>';
+            let rez = '' + params[0].axisValue + '';
+            //console.log(params); //quite useful for debug
+            params.forEach(item => {
+              //console.log(item); //quite useful for debug
+              var xx = '<p>'   + colorSpan(item.color) + ' ' + item.seriesName + ': ' + item.data + ' C' + '</p>'
+              rez += xx;
+            });
+
+            return rez;
+          }
         },
         legend: {
           data: [this.title]
@@ -83,9 +102,9 @@ export default {
         grid: {
           // left: '3%',
           // right: '4%',
-          // bottom: '3%',
+          bottom: '10%',
           containLabel: true,
-          y2: 1
+          y2: 10
         },
         // toolbox: {
         //   show: true,
@@ -101,6 +120,7 @@ export default {
           start: 0
         },
         xAxis: {
+          name: 'Time',
           type: 'category',
           data: this.xData
           // axisLabel: {
@@ -113,7 +133,10 @@ export default {
           // boundaryGap: false,
         },
         yAxis: {
-          type: 'value'
+          name: 'Temperature [C]',
+          min: Math.min.apply(Math, this.yData),
+          max: Math.max.apply(Math, this.yData),
+          // type: 'value'
         },
         series: [
           {

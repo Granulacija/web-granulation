@@ -8,7 +8,7 @@
 // const moment = require('moment')
 export default {
   name: "LineChartMinimized",
-  props: ['title', 'xData', 'yData'],
+  props: ['title', 'xData', 'yData', 'xUnit', 'yUnit'],
   computed: {
     zipData() {
       return this.xData.map((e, i) => {
@@ -20,7 +20,7 @@ export default {
     return {
       option: {
         title: {
-          text: this.title
+          text: this.title,
         },
         grid: {
           show: false,
@@ -33,11 +33,13 @@ export default {
         xAxis: {
           // type: 'category',
           data: this.xData,
-          show: false,
+          show: true,
         },
         yAxis: {
           // type: 'value',
-          show: false,
+          show: true,
+          min: Math.min.apply(Math, this.yData),
+          max: Math.max.apply(Math, this.yData),
 
         },
         series: [
