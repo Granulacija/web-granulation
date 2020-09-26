@@ -12,8 +12,9 @@
           img-alt=""
           img-bottom
           tag="article"
-          style="max-width: 20rem;"
-          class="m-6 image-view"
+          style="max-width: 20rem; border-radius: 25px;"
+          class="m-4 image-view"
+
       >
         <b-card-text>
           {{ step.name }}
@@ -24,23 +25,42 @@
 
     <h1 class="main-title mt-4"></h1>
     <b-card-group>
-      <b-col></b-col>
       <b-col>
-      <b-card v-for="step in goods" :key="step.name" @click.prevent="navigate(step.routeName)"
-              :title="step.name"
-              img-alt=""
-              img-bottom
-              tag="article"
-              style="max-width: 20rem;"
-              class="m-6 image-view"
+
+      </b-col>
+      <b-col> <b-card v-for="step in [goods[0]]" :key="step.name" @click.prevent="navigate(step.routeName)"
+                      :title="step.name"
+                      img-alt=""
+                      img-bottom
+                      tag="article"
+                      style="max-width: 20rem; border-radius: 25px;"
+                      class="m-6 image-view-side"
       >
         <b-card-text>
           {{ step.name }}
         </b-card-text>
 
-      </b-card>
+      </b-card></b-col>
+      <b-col>
+
       </b-col>
-      <b-col></b-col>
+
+      <b-col><b-card v-for="step in [goods[1]]" :key="step.name" @click.prevent="navigate(step.routeName)"
+                     :title="step.name"
+                     img-alt=""
+                     img-bottom
+                     tag="article"
+                     style="max-width: 20rem; border-radius: 25px;"
+                     class="m-6 image-view-side"
+      >
+        <b-card-text>
+          {{ step.name }}
+        </b-card-text>
+
+      </b-card></b-col>
+      <b-col>
+
+      </b-col>
     </b-card-group>
 
 
@@ -59,6 +79,7 @@ export default {
     return {
       steps: [
         {
+          image: 'steel-bowl.png',
           name: 'Priprava granularne raztopine',
           routeName: 'Preparation'
         },
@@ -123,11 +144,30 @@ a {
 }
 
 .image-view {
-  background-color: paleturquoise;
+  background-color: rgba(175,238,238, 0.6);
+  padding-bottom: 0.5em;
+  /*border-color: black;*/
+
+}
+.image-view-side {
+  background-color: rgba(175,238,255, 0.6);
+  width: 600px;
 }
 
-.image-view:hover {
-  background-color: turquoise;
+.image-view-side:hover {
+  background-color: rgba(64, 224, 208, 0.7);
+
 }
+.image-view:hover {
+  background-color: rgba(64, 224, 208, 0.7);
+}
+
+#app > div > div > div > article > img {
+  padding-bottom: 2em;
+}
+/*#app > div > div > div:nth-child(3) > article:nth-child(3) > img {*/
+/*  width: 100%;*/
+/*  padding: 10px*/
+/*}*/
 
 </style>

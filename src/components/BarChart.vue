@@ -41,7 +41,7 @@ export default {
           // right: '4%',
           // bottom: '3%',
           containLabel: true,
-          y2: 1
+          y2: 10
         },
         // toolbox: {
         //   show: true,
